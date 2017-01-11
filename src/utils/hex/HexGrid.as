@@ -1,7 +1,7 @@
 /**
  * Created by ZergMaster on 06.01.2017.
  */
-package
+package utils.hex
 {
 
 import flash.display.Shape;

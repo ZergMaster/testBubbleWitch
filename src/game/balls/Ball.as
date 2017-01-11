@@ -1,7 +1,7 @@
 /**
  * Created by ZergMaster on 05.01.2017.
  */
-package
+package game.balls
 {
 
 import flash.display.Shape;
@@ -9,6 +9,8 @@ import flash.display.Sprite;
 import flash.filters.DropShadowFilter;
 import flash.filters.GlowFilter;
 import flash.geom.Point;
+
+import utils.hex.HexGrid;
 
 public class Ball extends Sprite
 {
@@ -26,10 +28,6 @@ public class Ball extends Sprite
 			y = point.y;
 		}
 
-		trace('ball.x = '+x);
-		trace('ball.y = '+y);
-		trace('_weight:int = '+_weight);
-		
 		_colors[0] = 0x808080; //gray
 		_colors[1] = 0xffffff; //white
 		_colors[2] = 0x0000ff; //blue
@@ -71,10 +69,9 @@ public class Ball extends Sprite
 
 	public function remove():void
 	{
-		trace('function remove');
 		removeChild(_ball);
 		parent.removeChild(this);
-		Game.removeBallFromArray(this);
+		UpperBalls.removeBallFromArray(this);
 	}
 
 	public function transferWeight(weight:int):void
@@ -97,7 +94,7 @@ public class Ball extends Sprite
 		var pointY:Number = Math.floor(y+HexGrid.hexWidth*Math.sin(angle_rad));
 		var point:Point = new Point(pointX, pointY);
 
-		return Game.getBallFromPoint(point);
+		return UpperBalls.getBallFromPoint(point);
 	}
 
 	public function get weight():int

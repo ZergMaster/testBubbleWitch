@@ -5,7 +5,10 @@ import flash.display.Sprite;
 import flash.events.MouseEvent;
 import flash.geom.Point;
 
+import game.Game;
+
 import utils.Log;
+import utils.hex.HexGrid;
 
 public class Main extends Sprite
 {

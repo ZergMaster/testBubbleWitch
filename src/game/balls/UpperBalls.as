@@ -1,32 +1,24 @@
 /**
- * Created by ZergMaster on 08.01.2017.
+ * Created by ZergMaster on 12.01.2017.
  */
-package
+package game.balls
 {
 
 import flash.display.Sprite;
 import flash.geom.Point;
 
-public class Game extends Sprite
-{
+import utils.hex.HexGrid;
 
+public class UpperBalls extends Sprite
+{
 	private static var _balls:Vector.<Ball>;
 
-	public function Game()
+	public function UpperBalls()
 	{
 		layoutBalls();
 
 		addBallsWeight();
 		removeAllWithoutWeight();
-
-		addShootingBall();
-	}
-
-	private function addShootingBall():void
-	{
-		var midPoint:Point = new Point(Main.WIDTH/2, Main.HEIGHT);
-		var ball:Ball = new Ball(HexGrid.pixelsToHex(midPoint));
-		addChild(ball);
 	}
 
 	private function layoutBalls():void
@@ -55,9 +47,7 @@ public class Game extends Sprite
 		for(var i:int = 0; i < _balls.length; i++)
 		{
 			if(!_balls[i].y && !_balls[i].weight)
-			{
 				_balls[i].transferWeight(1);
-			}
 		}
 	}
 
