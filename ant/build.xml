@@ -1,0 +1,28 @@
+<project name="testBubbleWitchSaga">
+    <property file="developer.properties"/>
+    <property file="${DEVELOPER_PROPERTIES_FILE_NAME}"/>
+
+    <property name="TARGET_PLAYER" value="22.0"/>
+    <property name="SWF_VERSION" value="22"/>
+    <property name="SWF_OUTPUT_FILE" value="testBubbleWitchSaga.swf"/>
+
+    <property name="COMPILE_PARAMS"
+              value="${PROJECT_DIR}\Main.as -source-path ${PROJECT_DIR} -target-player=${TARGET_PLAYER} -swf-version=${SWF_VERSION} -o ${DESTINATION_DIR}\${SWF_OUTPUT_FILE}  -advanced-telemetry=true  -default-size 800 600"/>
+
+    <target name="clean">
+        <delete file="${DESTINATION_DIR}\${SWF_OUTPUT_FILE}"/>
+    </target>
+
+    <target name="compile">
+        <exec executable="${COMPILER}">
+            <arg line="${COMPILE_PARAMS}"/>
+        </exec>
+    </target>
+
+    <target name="compile_debug">
+        <exec executable="${COMPILER}">
+            <arg line="${COMPILE_PARAMS} -debug"/>
+        </exec>
+    </target>
+
+</project>

@@ -1,0 +1,4 @@
+*.lnk
+out/
+.idea/
+*.iml
