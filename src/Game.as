@@ -16,8 +16,17 @@ public class Game extends Sprite
 	{
 		layoutBalls();
 
-		addBallWeight();
+		addBallsWeight();
 		removeAllWithoutWeight();
+
+		addShootingBall();
+	}
+
+	private function addShootingBall():void
+	{
+		var midPoint:Point = new Point(Main.WIDTH/2, Main.HEIGHT);
+		var ball:Ball = new Ball(HexGrid.pixelsToHex(midPoint));
+		addChild(ball);
 	}
 
 	private function layoutBalls():void
@@ -41,7 +50,7 @@ public class Game extends Sprite
 		}
 	}
 
-	private static function addBallWeight():void
+	private static function addBallsWeight():void
 	{
 		for(var i:int = 0; i < _balls.length; i++)
 		{

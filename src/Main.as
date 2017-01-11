@@ -9,8 +9,8 @@ import utils.Log;
 
 public class Main extends Sprite
 {
-	private static const WIDTH:Number = 800;
-	private static const HEIGHT:Number = 600;
+	public static const WIDTH:Number = 800;
+	public static const HEIGHT:Number = 600;
 
 	public function Main()
 	{
