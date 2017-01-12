@@ -7,7 +7,7 @@
     <property name="SWF_OUTPUT_FILE" value="testBubbleWitchSaga.swf"/>
 
     <property name="COMPILE_PARAMS"
-              value="${PROJECT_DIR}\Main.as -source-path ${PROJECT_DIR} -target-player=${TARGET_PLAYER} -swf-version=${SWF_VERSION} -o ${DESTINATION_DIR}\${SWF_OUTPUT_FILE}  -advanced-telemetry=true  -default-size 800 600 -use-gpu=false"/>
+              value="${PROJECT_DIR}\Main.as -source-path ${PROJECT_DIR} -target-player=${TARGET_PLAYER} -swf-version=${SWF_VERSION} -o ${DESTINATION_DIR}\${SWF_OUTPUT_FILE}  -advanced-telemetry=true  -default-size 800 600 -use-gpu=true -default-frame-rate=60"/>
 
     <target name="clean">
         <delete file="${DESTINATION_DIR}\${SWF_OUTPUT_FILE}"/>

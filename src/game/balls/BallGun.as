@@ -20,7 +20,7 @@ public class BallGun extends Sprite
 
 	public function BallGun()
 	{
-		_bulletSpeed = HexGrid.hexWidth/3;
+		_bulletSpeed = Math.floor(HexGrid.hexWidth/5);
 
 		addShootingBall();
 		addTouchablePole();
@@ -61,7 +61,7 @@ public class BallGun extends Sprite
 			_ball.x = ballHexPoint.x;
 			_ball.y = ballHexPoint.y;
 			removeChild(_ball);
-			
+
 			UpperBalls.addBall(_ball);
 
 			addShootingBall();
@@ -75,6 +75,11 @@ public class BallGun extends Sprite
 		var testPoint:Point;
 		var bx:int;
 		var by:int;
+
+		if((ball.x <= 0) || (ball.x >= Main.WIDTH) || (ball.y <= 0))
+		{
+			return true;
+		}
 
 		for(var i:int = 0; i < 6; i++)
 		{
