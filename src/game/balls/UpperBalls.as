@@ -1,6 +1,3 @@
-/**
- * Created by ZergMaster on 12.01.2017.
- */
 package game.balls
 {
 
@@ -11,6 +8,7 @@ import utils.hex.HexGrid;
 
 public class UpperBalls extends Sprite
 {
+	private static var _ballsContainer:Sprite;
 	private static var _balls:Vector.<Ball>;
 
 	public function UpperBalls()
@@ -23,6 +21,9 @@ public class UpperBalls extends Sprite
 
 	private function layoutBalls():void
 	{
+		_ballsContainer = new Sprite();
+		addChild(_ballsContainer);
+
 		_balls = new <Ball>[];
 		for(var n:int = 0; n < 6; n++)
 		{
@@ -35,7 +36,7 @@ public class UpperBalls extends Sprite
 					var hexPoint:Point = HexGrid.pixelsToHex(
 							new Point((HexGrid.hexWidth*i+HexGrid.hexWidth/4), (HexGrid.hexYGap*n-HexGrid.hexYGap/4)));
 					var ball:Ball = new Ball(hexPoint);
-					addChild(ball);
+					_ballsContainer.addChild(ball);
 					_balls.push(ball);
 				}
 			}
@@ -51,12 +52,18 @@ public class UpperBalls extends Sprite
 		}
 	}
 
+	public static function addBall(ball:Ball):void
+	{
+		_balls.push(ball);
+		_ballsContainer.addChild(ball);
+	}
+
 	public static function getBallFromPoint(point:Point):Ball
 	{
 		for(var i:int = 0; i < _balls.length; i++)
 		{
 			var ball:Ball = _balls[i];
-			if((point.x == Math.floor(ball.x)) && (point.y == Math.floor(ball.y)))
+			if((Math.floor(point.x) == Math.floor(ball.x)) && (Math.floor(point.y) == Math.floor(ball.y)))
 				return ball;
 		}
 		return null;
