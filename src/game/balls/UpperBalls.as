@@ -43,6 +43,17 @@ public class UpperBalls extends Sprite
 		}
 	}
 
+	public static function resetBallsWeight():void
+	{
+		for(var i:int = 0; i < _balls.length; i++)
+		{
+			_balls[i].weight = 0;
+		}
+		
+		addBallsWeight();
+		removeAllWithoutWeight();
+	}
+
 	private static function addBallsWeight():void
 	{
 		for(var i:int = 0; i < _balls.length; i++)
@@ -55,7 +66,12 @@ public class UpperBalls extends Sprite
 	public static function addBall(ball:Ball):void
 	{
 		_balls.push(ball);
+		ball.weight = 1;
 		_ballsContainer.addChild(ball);
+		ball.checkColor(new Vector.<Ball>());
+
+		removeAllWithoutWeight();
+		resetBallsWeight();
 	}
 
 	public static function getBallFromPoint(point:Point):Ball

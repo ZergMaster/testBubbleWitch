@@ -15,10 +15,11 @@ import utils.hex.HexGrid;
 public class Ball extends Sprite
 {
 	private static var _colors:Vector.<uint> = new Vector.<uint>(6, true);
+	private var _currentColor:uint;
 
 	private var _ball:Sprite = new Sprite();
 
-	private var _weight:int = 0;
+	public var weight:int = 0;
 
 	public function Ball(point:Point = null, inputColor:uint = undefined)
 	{
@@ -37,8 +38,8 @@ public class Ball extends Sprite
 
 		var _fon:Shape = new Shape();
 		_fon.graphics.lineStyle(1);
-		var color:uint = inputColor ? inputColor : getRandomColor();
-		_fon.graphics.beginFill(color);
+		_currentColor = inputColor ? inputColor : getRandomColor();
+		_fon.graphics.beginFill(_currentColor);
 		_fon.graphics.drawCircle(0, 0, Math.floor(HexGrid.hexWidth/2-1));
 		_fon.graphics.endFill();
 		_fon.filters = [new GlowFilter(0x000000, 0.5, 30, 30, 2, 1, true), new DropShadowFilter(1, 90, 0, 0.5)];
@@ -74,17 +75,52 @@ public class Ball extends Sprite
 		UpperBalls.removeBallFromArray(this);
 	}
 
-	public function transferWeight(weight:int):void
+	public function transferWeight(inputWeight:int):void
 	{
-		_weight = weight;
+		weight = inputWeight;
 
 		for(var i:int = 0; i < 6; i++)
 		{
 			var ball:Ball = checkHexFromAngle(60*i);
 
-			if(ball && !ball._weight)
+			if(ball && !ball.weight)
 				ball.transferWeight(weight);
 		}
+	}
+
+	public function checkColor(sameColorBalls:Vector.<Ball>):void
+	{
+		if(!sameColorBalls.length)
+			sameColorBalls.push(this);
+
+		for(var i:int = 0; i < 6; i++)
+		{
+			var ball:Ball = checkHexFromAngle(60*i);
+
+			if((ball && ball.weight && (ball.currentColor == currentColor) && !alreadyInVector(sameColorBalls, ball)))
+			{
+				sameColorBalls.push(ball);
+				ball.checkColor(sameColorBalls);
+			}
+		}
+
+		if(sameColorBalls.length > 2)
+		{
+			for(var n:int = 0; n < sameColorBalls.length; n++)
+			{
+				sameColorBalls[n].weight = 0;
+			}
+		}
+	}
+
+	private static function alreadyInVector(balls:Vector.<Ball>, ball:Ball):Boolean
+	{
+		for(var n:int = 0; n < balls.length; n++)
+		{
+			if(balls[n] == ball)
+				return true;
+		}
+		return false;
 	}
 
 	private function checkHexFromAngle(angle_deg:int):Ball
@@ -97,9 +133,9 @@ public class Ball extends Sprite
 		return UpperBalls.getBallFromPoint(point);
 	}
 
-	public function get weight():int
+	public function get currentColor():uint
 	{
-		return _weight;
+		return _currentColor;
 	}
 }
 }
