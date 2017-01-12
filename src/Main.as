@@ -3,12 +3,11 @@ package
 
 import flash.display.Sprite;
 import flash.events.MouseEvent;
-import flash.geom.Point;
 
-import game.Game;
+import com.testBubbleWitchSaga.game.Game;
 
-import utils.Log;
-import utils.hex.HexGrid;
+import com.testBubbleWitchSaga.utils.Log;
+import com.testBubbleWitchSaga.utils.hex.HexGrid;
 
 public class Main extends Sprite
 {

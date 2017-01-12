@@ -1,7 +1,7 @@
 /**
  * Created by ZergMaster on 06.01.2017.
  */
-package utils
+package com.testBubbleWitchSaga.utils
 {
 
 import flash.display.Sprite;

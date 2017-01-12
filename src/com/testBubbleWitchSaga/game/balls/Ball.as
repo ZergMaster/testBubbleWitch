@@ -1,7 +1,7 @@
 /**
  * Created by ZergMaster on 05.01.2017.
  */
-package game.balls
+package com.testBubbleWitchSaga.game.balls
 {
 
 import flash.display.Shape;
@@ -10,7 +10,7 @@ import flash.filters.DropShadowFilter;
 import flash.filters.GlowFilter;
 import flash.geom.Point;
 
-import utils.hex.HexGrid;
+import com.testBubbleWitchSaga.utils.hex.HexGrid;
 
 public class Ball extends Sprite
 {

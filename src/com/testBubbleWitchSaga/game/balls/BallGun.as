@@ -1,4 +1,4 @@
-package game.balls
+package com.testBubbleWitchSaga.game.balls
 {
 
 import flash.display.Shape;
@@ -7,7 +7,7 @@ import flash.events.Event;
 import flash.events.MouseEvent;
 import flash.geom.Point;
 
-import utils.hex.HexGrid;
+import com.testBubbleWitchSaga.utils.hex.HexGrid;
 
 public class BallGun extends Sprite
 {

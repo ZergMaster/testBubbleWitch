@@ -1,10 +1,10 @@
-package game.balls
+package com.testBubbleWitchSaga.game.balls
 {
 
 import flash.display.Sprite;
 import flash.geom.Point;
 
-import utils.hex.HexGrid;
+import com.testBubbleWitchSaga.utils.hex.HexGrid;
 
 public class UpperBalls extends Sprite
 {
