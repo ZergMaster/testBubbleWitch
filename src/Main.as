@@ -22,12 +22,6 @@ public class Main extends Sprite
 		addChild(HexGrid.createGrid(WIDTH, HEIGHT));
 		var game:Game = new Game();
 		addChild(game);
-
-		stage.addEventListener(MouseEvent.CLICK, clickStageHandler);
-	}
-
-	private function clickStageHandler(event:MouseEvent):void
-	{
 	}
 }
 }
